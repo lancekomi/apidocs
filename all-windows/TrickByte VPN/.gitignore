@@ -1,0 +1,12 @@
+obj/*
+bin/*
+bin/Debug/OpenVPN/log.txt
+bin/x86/Debug/OpenVPN/log.txt
+VPNClientSetup/Debug/*
+
+!bin/Debug/OpenVPN
+!bin/Debug/OpenVPNConfig
+!bin/Debug/TAP-Driver
+!bin/x86/Debug/OpenVPN
+!bin/x86/Debug/OpenVPNConfig
+!bin/x86/Debug/TAP-Driver

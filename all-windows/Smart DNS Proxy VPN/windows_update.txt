@@ -1,0 +1,1 @@
+﻿"SmartDNSProxy VPN Client";1.0.0.0;"https://network.glbls.net/app/sdp//VPNClient-update.zip"

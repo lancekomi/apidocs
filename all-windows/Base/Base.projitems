@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>5f5e3599-d8a3-4a43-83a0-708356d892b9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Base</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AuthApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutoReconnect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutostartManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckUpdates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\frmMain.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Country.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\CountrySelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\Drivers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\Encrypter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IOpenVPN.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IVPNView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetworkManagment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OpenVPN.clsss.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OpenVPNConnectionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ras.class.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ServerInformation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerListClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StandardVpnProtocol.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VPNConnectionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VPNGate.class.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Forms\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Utilities\" />
+    <Folder Include="$(MSBuildThisFileDirectory)UI\" />
+  </ItemGroup>
+</Project>

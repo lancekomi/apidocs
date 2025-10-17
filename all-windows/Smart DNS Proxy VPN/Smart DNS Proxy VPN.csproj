@@ -1,0 +1,759 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A800AA41-E769-41BF-88C1-F92995E22A68}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartDNSProxy_VPN_Client</RootNamespace>
+    <AssemblyName>Smart DNS Proxy VPN Client</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.1.3.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Network-Vpn-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SmartDNSProxy_VPN_Client.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotRas">
+      <HintPath>.\DotRas.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.3.5.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.3.5.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.3.5.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Win32.TaskScheduler">
+      <HintPath>.\Microsoft.Win32.TaskScheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rollbar, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rollbar.0.3.2\lib\net45\Rollbar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUpdater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUpdater.Designer.cs">
+      <DependentUpon>frmUpdater.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogs.Designer.cs">
+      <DependentUpon>frmLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUpdater.resx">
+      <DependentUpon>frmUpdater.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogs.resx">
+      <DependentUpon>frmLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="NetFwTypeLib">
+      <Guid>{58FBCF7C-E7A9-467C-80B3-FC65E8FCCA08}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\MainFormTextHider.png" />
+    <Content Include="Resources\Network-Vpn-icon.ico" />
+    <Content Include="Resources\SmartDNSProxyLogoOnly.png" />
+    <None Include="Resources\Zimbabwe.png" />
+    <None Include="Resources\Zambia.png" />
+    <None Include="Resources\Yemen.png" />
+    <None Include="Resources\Western Sahara.png" />
+    <None Include="Resources\Wales.png" />
+    <None Include="Resources\Virgin Islands US.png" />
+    <None Include="Resources\Virgin Islands British.png" />
+    <None Include="Resources\Vietnam.png" />
+    <None Include="Resources\Venezuela.png" />
+    <None Include="Resources\Vatican City.png" />
+    <None Include="Resources\Vanuatu.png" />
+    <None Include="Resources\Uzbekistan.png" />
+    <None Include="Resources\Uruguay.png" />
+    <None Include="Resources\United States.png" />
+    <None Include="Resources\United States - West.png" />
+    <None Include="Resources\United States - East.png" />
+    <None Include="Resources\United States - Center.png" />
+    <None Include="Resources\United Nations.png" />
+    <None Include="Resources\United Kingdom.png" />
+    <None Include="Resources\United Arab Emirates.png" />
+    <None Include="Resources\Ukraine.png" />
+    <None Include="Resources\Uganda.png" />
+    <None Include="Resources\Tuvalu.png" />
+    <None Include="Resources\Turks and Caicos Islands.png" />
+    <None Include="Resources\Turkmenistan.png" />
+    <None Include="Resources\Turkey.png" />
+    <None Include="Resources\Tunisia.png" />
+    <None Include="Resources\Trinidad &amp; Tobago.png" />
+    <None Include="Resources\Tonga.png" />
+    <None Include="Resources\Togo.png" />
+    <None Include="Resources\Timor-Leste.png" />
+    <None Include="Resources\Thailand.png" />
+    <None Include="Resources\Tanzania.png" />
+    <None Include="Resources\Tajikistan.png" />
+    <None Include="Resources\Taiwan.png" />
+    <None Include="Resources\Tahiti%28French Polinesia%29.png" />
+    <None Include="Resources\Syria.png" />
+    <None Include="Resources\Switzerland.png" />
+    <None Include="Resources\Sweden.png" />
+    <None Include="Resources\Swaziland.png" />
+    <None Include="Resources\Suriname.png" />
+    <None Include="Resources\Sudan.png" />
+    <None Include="Resources\St Vincent &amp; the Grenadines.png" />
+    <None Include="Resources\St Kitts &amp; Nevis.png" />
+    <None Include="Resources\Sri Lanka.png" />
+    <None Include="Resources\splashScreenImg.png" />
+    <None Include="Resources\Spain.png" />
+    <None Include="Resources\South Korea.png" />
+    <None Include="Resources\South Africa.png" />
+    <None Include="Resources\Somaliland.png" />
+    <None Include="Resources\Somalia.png" />
+    <None Include="Resources\Solomon Islands.png" />
+    <None Include="Resources\smartDnsProxyLogo.png" />
+    <None Include="Resources\Slovenia.png" />
+    <None Include="Resources\Slovakia.png" />
+    <None Include="Resources\Singapore.png" />
+    <None Include="Resources\Sierra Leone.png" />
+    <None Include="Resources\Seyshelles.png" />
+    <None Include="Resources\Serbia%28Yugoslavia%29.png" />
+    <None Include="Resources\Senegal.png" />
+    <None Include="Resources\Scotland.png" />
+    <None Include="Resources\saveBtnBorder.png" />
+    <None Include="Resources\Saudi Arabia.png" />
+    <None Include="Resources\Sao Tome &amp; Principe.png" />
+    <None Include="Resources\San Marino.png" />
+    <None Include="Resources\Samoa.png" />
+    <None Include="Resources\Saint Lucia.png" />
+    <None Include="Resources\Rwanda.png" />
+    <None Include="Resources\Russia.png" />
+    <None Include="Resources\Romania.png" />
+    <None Include="Resources\Reunion.png" />
+    <None Include="Resources\Red Cross.png" />
+    <None Include="Resources\Qatar.png" />
+    <None Include="Resources\Puerto Rico.png" />
+    <None Include="Resources\Portugal.png" />
+    <None Include="Resources\Poland.png" />
+    <None Include="Resources\Philippines.png" />
+    <None Include="Resources\Peru.png" />
+    <None Include="Resources\Paraguay.png" />
+    <None Include="Resources\Papua New Guinea.png" />
+    <None Include="Resources\Panama.png" />
+    <None Include="Resources\Palestine.png" />
+    <None Include="Resources\Palau.png" />
+    <None Include="Resources\Pakistan.png" />
+    <None Include="Resources\OPEC.png" />
+    <None Include="Resources\Oman.png" />
+    <None Include="Resources\Olimpic Movement.png" />
+    <None Include="Resources\Norway.png" />
+    <None Include="Resources\Northern Ireland.png" />
+    <None Include="Resources\Northern Cyprus.png" />
+    <None Include="Resources\North Korea.png" />
+    <None Include="Resources\Nigeria.png" />
+    <None Include="Resources\Niger.png" />
+    <None Include="Resources\Nicaragua.png" />
+    <None Include="Resources\New Zealand.png" />
+    <None Include="Resources\New Caledonia.png" />
+    <None Include="Resources\Netherlands.png" />
+    <None Include="Resources\Netherlands Antilles.png" />
+    <None Include="Resources\Nepal.png" />
+    <None Include="Resources\Nauru.png" />
+    <None Include="Resources\NATO.png" />
+    <None Include="Resources\Namibia.png" />
+    <None Include="Resources\Myanmar.png" />
+    <None Include="Resources\Mozambique.png" />
+    <None Include="Resources\Morocco.png" />
+    <None Include="Resources\Montserrat.png" />
+    <None Include="Resources\Montenegro.png" />
+    <None Include="Resources\Mongolia.png" />
+    <None Include="Resources\Monaco.png" />
+    <None Include="Resources\Moldova.png" />
+    <None Include="Resources\Micronesia.png" />
+    <None Include="Resources\Mexico.png" />
+    <None Include="Resources\Mauritius.png" />
+    <None Include="Resources\Mauritania.png" />
+    <None Include="Resources\Martinique.png" />
+    <None Include="Resources\Marshall Islands.png" />
+    <None Include="Resources\Malta.png" />
+    <None Include="Resources\Mali.png" />
+    <None Include="Resources\Maldives.png" />
+    <None Include="Resources\Malaysia.png" />
+    <None Include="Resources\Malawi.png" />
+    <None Include="Resources\Madagascar.png" />
+    <None Include="Resources\Macedonia.png" />
+    <None Include="Resources\Macao.png" />
+    <None Include="Resources\Luxembourg.png" />
+    <None Include="Resources\loader.gif" />
+    <None Include="Resources\Lithuania.png" />
+    <None Include="Resources\Liechtenstein.png" />
+    <None Include="Resources\Libya.png" />
+    <None Include="Resources\Liberia.png" />
+    <None Include="Resources\Lesotho.png" />
+    <None Include="Resources\Lebanon.png" />
+    <None Include="Resources\Latvia.png" />
+    <None Include="Resources\Laos.png" />
+    <None Include="Resources\Kyrgyzstan.png" />
+    <None Include="Resources\Kuwait.png" />
+    <None Include="Resources\Kosovo.png" />
+    <None Include="Resources\Kiribati.png" />
+    <None Include="Resources\Kenya.png" />
+    <None Include="Resources\Kazakhstan.png" />
+    <None Include="Resources\Jordan.png" />
+    <None Include="Resources\Jersey.png" />
+    <None Include="Resources\Japan.png" />
+    <None Include="Resources\Jamaica.png" />
+    <None Include="Resources\Italy.png" />
+    <None Include="Resources\Israel.png" />
+    <None Include="Resources\Isle of Man.png" />
+    <None Include="Resources\Islamic Conference.png" />
+    <None Include="Resources\Ireland.png" />
+    <None Include="Resources\Iraq.png" />
+    <None Include="Resources\Iran.png" />
+    <None Include="Resources\Indonesia.png" />
+    <None Include="Resources\India.png" />
+    <None Include="Resources\Iceland.png" />
+    <None Include="Resources\Hungary.png" />
+    <None Include="Resources\Hong Kong.png" />
+    <None Include="Resources\Honduras.png" />
+    <None Include="Resources\Haiti.png" />
+    <None Include="Resources\Guyana.png" />
+    <None Include="Resources\Guinea-Bissau.png" />
+    <None Include="Resources\Guinea.png" />
+    <None Include="Resources\Guernsey.png" />
+    <None Include="Resources\Guatemala.png" />
+    <None Include="Resources\Guam.png" />
+    <None Include="Resources\Guadeloupe.png" />
+    <None Include="Resources\Grenada.png" />
+    <None Include="Resources\Greenland.png" />
+    <None Include="Resources\Greece.png" />
+    <None Include="Resources\Gibraltar.png" />
+    <None Include="Resources\Ghana.png" />
+    <None Include="Resources\Germany.png" />
+    <None Include="Resources\Georgia.png" />
+    <None Include="Resources\Gambia.png" />
+    <None Include="Resources\Gabon.png" />
+    <None Include="Resources\France.png" />
+    <None Include="Resources\Finland.png" />
+    <None Include="Resources\Fiji.png" />
+    <None Include="Resources\Faroes.png" />
+    <None Include="Resources\European Union.png" />
+    <None Include="Resources\Ethiopia.png" />
+    <None Include="Resources\Estonia.png" />
+    <None Include="Resources\Eritrea.png" />
+    <None Include="Resources\Equatorial Guinea.png" />
+    <None Include="Resources\Equador.png" />
+    <None Include="Resources\England.png" />
+    <None Include="Resources\Empty.png" />
+    <None Include="Resources\El Salvador.png" />
+    <None Include="Resources\Egypt.png" />
+    <None Include="Resources\Dominican Republic.png" />
+    <None Include="Resources\Dominica.png" />
+    <None Include="Resources\Djibouti.png" />
+    <None Include="Resources\disconnectBtn.png" />
+    <None Include="Resources\Denmark.png" />
+    <None Include="Resources\Czech Republic.png" />
+    <None Include="Resources\Cyprus.png" />
+    <None Include="Resources\Cuba.png" />
+    <None Include="Resources\Croatia.png" />
+    <None Include="Resources\Cote d%27Ivoire.png" />
+    <None Include="Resources\Costa Rica.png" />
+    <None Include="Resources\Cook Islands.png" />
+    <None Include="Resources\connectBtn.png" />
+    <None Include="Resources\Congo-Kinshasa.png" />
+    <None Include="Resources\Congo-Brazzaville.png" />
+    <None Include="Resources\Comoros.png" />
+    <None Include="Resources\Commonwealth.png" />
+    <None Include="Resources\comboboxBg.png" />
+    <None Include="Resources\Colombia.png" />
+    <None Include="Resources\CIS.png" />
+    <None Include="Resources\China.png" />
+    <None Include="Resources\Chile.png" />
+    <None Include="Resources\Chad.png" />
+    <None Include="Resources\Central African Republic.png" />
+    <None Include="Resources\Cayman Islands.png" />
+    <None Include="Resources\CARICOM.png" />
+    <None Include="Resources\Cape Verde.png" />
+    <None Include="Resources\Canada.png" />
+    <None Include="Resources\Cameroon.png" />
+    <None Include="Resources\Cambodja.png" />
+    <None Include="Resources\Burundi.png" />
+    <None Include="Resources\Burkina Faso.png" />
+    <None Include="Resources\Bulgaria.png" />
+    <None Include="Resources\Brunei.png" />
+    <None Include="Resources\Brazil.png" />
+    <None Include="Resources\Botswana.png" />
+    <None Include="Resources\Bosnia &amp; Herzegovina.png" />
+    <None Include="Resources\Bolivia.png" />
+    <None Include="Resources\Bhutan.png" />
+    <None Include="Resources\Bermuda.png" />
+    <None Include="Resources\Benin.png" />
+    <None Include="Resources\Belize.png" />
+    <None Include="Resources\Belgium.png" />
+    <None Include="Resources\Belarus.png" />
+    <None Include="Resources\Barbados.png" />
+    <None Include="Resources\Bangladesh.png" />
+    <None Include="Resources\Bahrain.png" />
+    <None Include="Resources\Bahamas.png" />
+    <None Include="Resources\Azerbaijan.png" />
+    <None Include="Resources\authFailBtn.png" />
+    <None Include="Resources\Austria.png" />
+    <None Include="Resources\Australia.png" />
+    <None Include="Resources\ASEAN.png" />
+    <None Include="Resources\Aruba.png" />
+    <None Include="Resources\Armenia.png" />
+    <None Include="Resources\Argentina.png" />
+    <None Include="Resources\Arab League.png" />
+    <None Include="Resources\Antigua &amp; Barbuda.png" />
+    <None Include="Resources\Antarctica.png" />
+    <None Include="Resources\Anguilla.png" />
+    <None Include="Resources\Angola.png" />
+    <None Include="Resources\Andorra.png" />
+    <None Include="Resources\American Samoa.png" />
+    <None Include="Resources\Algeria.png" />
+    <None Include="Resources\Albania.png" />
+    <None Include="Resources\African Union.png" />
+    <None Include="Resources\Afghanistan.png" />
+    <None Include="bin\Debug\Flags\Afghanistan.png" />
+    <None Include="bin\Debug\Flags\African Union%28OAS%29.png" />
+    <None Include="bin\Debug\Flags\Albania.png" />
+    <None Include="bin\Debug\Flags\Algeria.png" />
+    <None Include="bin\Debug\Flags\American Samoa.png" />
+    <None Include="bin\Debug\Flags\Andorra.png" />
+    <None Include="bin\Debug\Flags\Angola.png" />
+    <None Include="bin\Debug\Flags\Anguilla.png" />
+    <None Include="bin\Debug\Flags\Antarctica.png" />
+    <None Include="bin\Debug\Flags\Antigua &amp; Barbuda.png" />
+    <None Include="bin\Debug\Flags\Arab League.png" />
+    <None Include="bin\Debug\Flags\Argentina.png" />
+    <None Include="bin\Debug\Flags\Armenia.png" />
+    <None Include="bin\Debug\Flags\Aruba.png" />
+    <None Include="bin\Debug\Flags\ASEAN.png" />
+    <None Include="bin\Debug\Flags\Australia.png" />
+    <None Include="bin\Debug\Flags\Austria.png" />
+    <None Include="bin\Debug\Flags\Azerbaijan.png" />
+    <None Include="bin\Debug\Flags\Bahamas.png" />
+    <None Include="bin\Debug\Flags\Bahrain.png" />
+    <None Include="bin\Debug\Flags\Bangladesh.png" />
+    <None Include="bin\Debug\Flags\Barbados.png" />
+    <None Include="bin\Debug\Flags\Belarus.png" />
+    <None Include="bin\Debug\Flags\Belgium.png" />
+    <None Include="bin\Debug\Flags\Belize.png" />
+    <None Include="bin\Debug\Flags\Benin.png" />
+    <None Include="bin\Debug\Flags\Bermuda.png" />
+    <None Include="bin\Debug\Flags\Bhutan.png" />
+    <None Include="bin\Debug\Flags\Bolivia.png" />
+    <None Include="bin\Debug\Flags\Bosnia &amp; Herzegovina.png" />
+    <None Include="bin\Debug\Flags\Botswana.png" />
+    <None Include="bin\Debug\Flags\Brazil.png" />
+    <None Include="bin\Debug\Flags\Brunei.png" />
+    <None Include="bin\Debug\Flags\Bulgaria.png" />
+    <None Include="bin\Debug\Flags\Burkina Faso.png" />
+    <None Include="bin\Debug\Flags\Burundi.png" />
+    <None Include="bin\Debug\Flags\Cambodja.png" />
+    <None Include="bin\Debug\Flags\Cameroon.png" />
+    <None Include="bin\Debug\Flags\Canada.png" />
+    <None Include="bin\Debug\Flags\Cape Verde.png" />
+    <None Include="bin\Debug\Flags\CARICOM.png" />
+    <None Include="bin\Debug\Flags\Cayman Islands.png" />
+    <None Include="bin\Debug\Flags\Central African Republic.png" />
+    <None Include="bin\Debug\Flags\Chad.png" />
+    <None Include="bin\Debug\Flags\Chile.png" />
+    <None Include="bin\Debug\Flags\China.png" />
+    <None Include="bin\Debug\Flags\CIS.png" />
+    <None Include="bin\Debug\Flags\Colombia.png" />
+    <None Include="bin\Debug\Flags\Commonwealth.png" />
+    <None Include="bin\Debug\Flags\Comoros.png" />
+    <None Include="bin\Debug\Flags\Congo-Brazzaville.png" />
+    <None Include="bin\Debug\Flags\Congo-Kinshasa.png" />
+    <None Include="bin\Debug\Flags\Cook Islands.png" />
+    <None Include="bin\Debug\Flags\Costa Rica.png" />
+    <None Include="bin\Debug\Flags\Cote d%27Ivoire.png" />
+    <None Include="bin\Debug\Flags\Croatia.png" />
+    <None Include="bin\Debug\Flags\Cuba.png" />
+    <None Include="bin\Debug\Flags\Cyprus.png" />
+    <None Include="bin\Debug\Flags\Czech Republic.png" />
+    <None Include="bin\Debug\Flags\Denmark.png" />
+    <None Include="bin\Debug\Flags\Djibouti.png" />
+    <None Include="bin\Debug\Flags\Dominica.png" />
+    <None Include="bin\Debug\Flags\Dominican Republic.png" />
+    <None Include="bin\Debug\Flags\Egypt.png" />
+    <None Include="bin\Debug\Flags\El Salvador.png" />
+    <None Include="bin\Debug\Flags\England.png" />
+    <None Include="bin\Debug\Flags\Equador.png" />
+    <None Include="bin\Debug\Flags\Equatorial Guinea.png" />
+    <None Include="bin\Debug\Flags\Eritrea.png" />
+    <None Include="bin\Debug\Flags\Estonia.png" />
+    <None Include="bin\Debug\Flags\Ethiopia.png" />
+    <None Include="bin\Debug\Flags\European Union.png" />
+    <None Include="bin\Debug\Flags\Faroes.png" />
+    <None Include="bin\Debug\Flags\Fiji.png" />
+    <None Include="bin\Debug\Flags\Finland.png" />
+    <None Include="bin\Debug\Flags\France.png" />
+    <None Include="bin\Debug\Flags\Gabon.png" />
+    <None Include="bin\Debug\Flags\Gambia.png" />
+    <None Include="bin\Debug\Flags\Georgia.png" />
+    <None Include="bin\Debug\Flags\Germany.png" />
+    <None Include="bin\Debug\Flags\Ghana.png" />
+    <None Include="bin\Debug\Flags\Gibraltar.png" />
+    <None Include="bin\Debug\Flags\Greece.png" />
+    <None Include="bin\Debug\Flags\Greenland.png" />
+    <None Include="bin\Debug\Flags\Grenada.png" />
+    <None Include="bin\Debug\Flags\Guadeloupe.png" />
+    <None Include="bin\Debug\Flags\Guam.png" />
+    <None Include="bin\Debug\Flags\Guatemala.png" />
+    <None Include="bin\Debug\Flags\Guernsey.png" />
+    <None Include="bin\Debug\Flags\Guinea.png" />
+    <None Include="bin\Debug\Flags\Guinea-Bissau.png" />
+    <None Include="bin\Debug\Flags\Guyana.png" />
+    <None Include="bin\Debug\Flags\Haiti.png" />
+    <None Include="bin\Debug\Flags\Honduras.png" />
+    <None Include="bin\Debug\Flags\Hong Kong.png" />
+    <None Include="bin\Debug\Flags\Hungary.png" />
+    <None Include="bin\Debug\Flags\Iceland.png" />
+    <None Include="bin\Debug\Flags\India.png" />
+    <None Include="bin\Debug\Flags\Indonesia.png" />
+    <None Include="bin\Debug\Flags\Iran.png" />
+    <None Include="bin\Debug\Flags\Iraq.png" />
+    <None Include="bin\Debug\Flags\Ireland.png" />
+    <None Include="bin\Debug\Flags\Islamic Conference.png" />
+    <None Include="bin\Debug\Flags\Isle of Man.png" />
+    <None Include="bin\Debug\Flags\Israel.png" />
+    <None Include="bin\Debug\Flags\Italy.png" />
+    <None Include="bin\Debug\Flags\Jamaica.png" />
+    <None Include="bin\Debug\Flags\japan.png" />
+    <None Include="bin\Debug\Flags\Jersey.png" />
+    <None Include="bin\Debug\Flags\Jordan.png" />
+    <None Include="bin\Debug\Flags\Kazakhstan.png" />
+    <None Include="bin\Debug\Flags\Kenya.png" />
+    <None Include="bin\Debug\Flags\Kiribati.png" />
+    <None Include="bin\Debug\Flags\Kosovo.png" />
+    <None Include="bin\Debug\Flags\Kuwait.png" />
+    <None Include="bin\Debug\Flags\Kyrgyzstan.png" />
+    <None Include="bin\Debug\Flags\Laos.png" />
+    <None Include="bin\Debug\Flags\Latvia.png" />
+    <None Include="bin\Debug\Flags\Lebanon.png" />
+    <None Include="bin\Debug\Flags\Lesotho.png" />
+    <None Include="bin\Debug\Flags\Liberia.png" />
+    <None Include="bin\Debug\Flags\Libya.png" />
+    <None Include="bin\Debug\Flags\Liechtenstein.png" />
+    <None Include="bin\Debug\Flags\Lithuania.png" />
+    <None Include="bin\Debug\Flags\Luxembourg.png" />
+    <None Include="bin\Debug\Flags\Macao.png" />
+    <None Include="bin\Debug\Flags\Macedonia.png" />
+    <None Include="bin\Debug\Flags\Madagascar.png" />
+    <None Include="bin\Debug\Flags\Malawi.png" />
+    <None Include="bin\Debug\Flags\Malaysia.png" />
+    <None Include="bin\Debug\Flags\Maldives.png" />
+    <None Include="bin\Debug\Flags\Mali.png" />
+    <None Include="bin\Debug\Flags\Malta.png" />
+    <None Include="bin\Debug\Flags\Marshall Islands.png" />
+    <None Include="bin\Debug\Flags\Martinique.png" />
+    <None Include="bin\Debug\Flags\Mauritania.png" />
+    <None Include="bin\Debug\Flags\Mauritius.png" />
+    <None Include="bin\Debug\Flags\Mexico.png" />
+    <None Include="bin\Debug\Flags\Micronesia.png" />
+    <None Include="bin\Debug\Flags\Moldova.png" />
+    <None Include="bin\Debug\Flags\Monaco.png" />
+    <None Include="bin\Debug\Flags\Mongolia.png" />
+    <None Include="bin\Debug\Flags\Montenegro.png" />
+    <None Include="bin\Debug\Flags\Montserrat.png" />
+    <None Include="bin\Debug\Flags\Morocco.png" />
+    <None Include="bin\Debug\Flags\Mozambique.png" />
+    <None Include="bin\Debug\Flags\Myanmar%28Burma%29.png" />
+    <None Include="bin\Debug\Flags\Namibia.png" />
+    <None Include="bin\Debug\Flags\NATO.png" />
+    <None Include="bin\Debug\Flags\Nauru.png" />
+    <None Include="bin\Debug\Flags\Nepal.png" />
+    <None Include="bin\Debug\Flags\Netherlands Antilles.png" />
+    <None Include="bin\Debug\Flags\Netherlands.png" />
+    <None Include="bin\Debug\Flags\New Caledonia.png" />
+    <None Include="bin\Debug\Flags\New Zealand.png" />
+    <None Include="bin\Debug\Flags\Nicaragua.png" />
+    <None Include="bin\Debug\Flags\Niger.png" />
+    <None Include="bin\Debug\Flags\Nigeria.png" />
+    <None Include="bin\Debug\Flags\North Korea.png" />
+    <None Include="bin\Debug\Flags\Northern Cyprus.png" />
+    <None Include="bin\Debug\Flags\Northern Ireland.png" />
+    <None Include="bin\Debug\Flags\Norway.png" />
+    <None Include="bin\Debug\Flags\Olimpic Movement.png" />
+    <None Include="bin\Debug\Flags\Oman.png" />
+    <None Include="bin\Debug\Flags\OPEC.png" />
+    <None Include="bin\Debug\Flags\Pakistan.png" />
+    <None Include="bin\Debug\Flags\Palau.png" />
+    <None Include="bin\Debug\Flags\Palestine.png" />
+    <None Include="bin\Debug\Flags\Panama.png" />
+    <None Include="bin\Debug\Flags\Papua New Guinea.png" />
+    <None Include="bin\Debug\Flags\Paraguay.png" />
+    <None Include="bin\Debug\Flags\Peru.png" />
+    <None Include="bin\Debug\Flags\Philippines.png" />
+    <None Include="bin\Debug\Flags\Poland.png" />
+    <None Include="bin\Debug\Flags\Portugal.png" />
+    <None Include="bin\Debug\Flags\Puerto Rico.png" />
+    <None Include="bin\Debug\Flags\Qatar.png" />
+    <None Include="bin\Debug\Flags\Red Cross.png" />
+    <None Include="bin\Debug\Flags\Reunion.png" />
+    <None Include="bin\Debug\Flags\Romania.png" />
+    <None Include="bin\Debug\Flags\Russian Federation.png" />
+    <None Include="bin\Debug\Flags\Rwanda.png" />
+    <None Include="bin\Debug\Flags\Saint Lucia.png" />
+    <None Include="bin\Debug\Flags\Samoa.png" />
+    <None Include="bin\Debug\Flags\San Marino.png" />
+    <None Include="bin\Debug\Flags\Sao Tome &amp; Principe.png" />
+    <None Include="bin\Debug\Flags\Saudi Arabia.png" />
+    <None Include="bin\Debug\Flags\Scotland.png" />
+    <None Include="bin\Debug\Flags\Senegal.png" />
+    <None Include="bin\Debug\Flags\Serbia%28Yugoslavia%29.png" />
+    <None Include="bin\Debug\Flags\Seyshelles.png" />
+    <None Include="bin\Debug\Flags\Sierra Leone.png" />
+    <None Include="bin\Debug\Flags\Singapore.png" />
+    <None Include="bin\Debug\Flags\Slovakia.png" />
+    <None Include="bin\Debug\Flags\Slovenia.png" />
+    <None Include="bin\Debug\Flags\Solomon Islands.png" />
+    <None Include="bin\Debug\Flags\Somalia.png" />
+    <None Include="bin\Debug\Flags\Somaliland.png" />
+    <None Include="bin\Debug\Flags\South Africa.png" />
+    <None Include="bin\Debug\Flags\South Korea.png" />
+    <None Include="bin\Debug\Flags\Spain.png" />
+    <None Include="bin\Debug\Flags\Sri Lanka.png" />
+    <None Include="bin\Debug\Flags\St Kitts &amp; Nevis.png" />
+    <None Include="bin\Debug\Flags\St Vincent &amp; the Grenadines.png" />
+    <None Include="bin\Debug\Flags\Sudan.png" />
+    <None Include="bin\Debug\Flags\Suriname.png" />
+    <None Include="bin\Debug\Flags\Swaziland.png" />
+    <None Include="bin\Debug\Flags\Sweden.png" />
+    <None Include="bin\Debug\Flags\Switzerland.png" />
+    <None Include="bin\Debug\Flags\Syria.png" />
+    <None Include="bin\Debug\Flags\Tahiti%28French Polinesia%29.png" />
+    <None Include="bin\Debug\Flags\Taiwan.png" />
+    <None Include="bin\Debug\Flags\Tajikistan.png" />
+    <None Include="bin\Debug\Flags\Tanzania.png" />
+    <None Include="bin\Debug\Flags\Thailand.png" />
+    <None Include="bin\Debug\Flags\Timor-Leste.png" />
+    <None Include="bin\Debug\Flags\Togo.png" />
+    <None Include="bin\Debug\Flags\Tonga.png" />
+    <None Include="bin\Debug\Flags\Trinidad &amp; Tobago.png" />
+    <None Include="bin\Debug\Flags\Tunisia.png" />
+    <None Include="bin\Debug\Flags\Turkey.png" />
+    <None Include="bin\Debug\Flags\Turkmenistan.png" />
+    <None Include="bin\Debug\Flags\Turks and Caicos Islands.png" />
+    <None Include="bin\Debug\Flags\Tuvalu.png" />
+    <None Include="bin\Debug\Flags\Uganda.png" />
+    <None Include="bin\Debug\Flags\Ukraine.png" />
+    <None Include="bin\Debug\Flags\United Arab Emirates.png" />
+    <None Include="bin\Debug\Flags\United Kingdom.png" />
+    <None Include="bin\Debug\Flags\United Nations.png" />
+    <None Include="bin\Debug\Flags\United States - East.png" />
+    <None Include="bin\Debug\Flags\United States - West.png" />
+    <None Include="bin\Debug\Flags\United States.png" />
+    <None Include="bin\Debug\Flags\Uruguay.png" />
+    <None Include="bin\Debug\Flags\Uzbekistan.png" />
+    <None Include="bin\Debug\Flags\Vanuatu.png" />
+    <None Include="bin\Debug\Flags\Vatican City.png" />
+    <None Include="bin\Debug\Flags\Venezuela.png" />
+    <None Include="bin\Debug\Flags\Viet Nam.png" />
+    <None Include="bin\Debug\Flags\Virgin Islands British.png" />
+    <None Include="bin\Debug\Flags\Virgin Islands US.png" />
+    <None Include="bin\Debug\Flags\Wales.png" />
+    <None Include="bin\Debug\Flags\Western Sahara.png" />
+    <None Include="bin\Debug\Flags\Yemen.png" />
+    <None Include="bin\Debug\Flags\Zambia.png" />
+    <None Include="bin\Debug\Flags\Zimbabwe.png" />
+    <Content Include="Network-Vpn-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Material Skin\MaterialSkin.csproj">
+      <Project>{8eb7611b-68cd-4b8b-987a-11717e2b250c}</Project>
+      <Name>MaterialSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\Base\Base.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe" sign /sha1 e73f545d427fa93209cc42a20f9ac9a278612c5f /tr http://timestamp.comodoca.com "$(ProjectDir)obj\$(Configuration)\Smart DNS Proxy VPN Client.exe"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
